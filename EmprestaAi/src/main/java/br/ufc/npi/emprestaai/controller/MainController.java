@@ -48,5 +48,21 @@ public class MainController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(path="/logout")
+	public String logout(HttpSession session){
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/cadastro")
+	public String cadastro(){
+		return "cadastro";
+	}
+	
+	@RequestMapping(path="/cadastrar")
+	public String cadastrar(Usuario usuario){
+		usuarioService.salvarUsuario(usuario);
+		return "redirect:/";
+	}
 	
 }

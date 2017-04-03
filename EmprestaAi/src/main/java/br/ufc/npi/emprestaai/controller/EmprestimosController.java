@@ -34,7 +34,7 @@ public class EmprestimosController {
 	public String index(HttpSession session, Model model){
 		Usuario usuarioLogado = (Usuario)session.getAttribute("usuario");
 		if(usuarioLogado != null){
-			List<Contato> todoscontatos = contatoService.listAll();
+			List<Contato> todoscontatos = contatoService.listByUsuarioId(usuarioLogado.getId());
 			List<Contato> contatosComEmprestimo = new ArrayList<>();
 			for(Contato c : todoscontatos){
 				if(c.getItens().size() > 0){

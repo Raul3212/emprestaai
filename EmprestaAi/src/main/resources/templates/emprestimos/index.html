@@ -38,6 +38,7 @@
 			<tbody>
 				<th:block th:each="c : ${contatos}">
 					<th:block th:each="i : ${c.itens}">
+						<tr>
 							<td th:text="${c.nome}"></td>
 							<td th:text="${i.nome}"></td>
 							<td th:text="${i.dataDevolucao}"></td>
