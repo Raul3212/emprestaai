@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<!--Import Google Icon Font-->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link href="/webjars/materializecss/0.98.0/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+	<div th:include="fragments/navbar"></div>
+	<div class="container">
+
+		<h5>Lista de Empréstimos</h5>
+		<a href="/emprestimos/cadastro"
+			class="waves-effect waves-light btn blue"> <i
+			class="material-icons left">add</i>Adicionar Empréstimo
+		</a>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Contato</th>
+					<th>Item</th>
+					<th>Data de Devolução</th>
+					<th>Ação</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<th:block th:each="c : ${contatos}">
+					<th:block th:each="i : ${c.itens}">
+							<td th:text="${c.nome}"></td>
+							<td th:text="${i.nome}"></td>
+							<td th:text="${i.dataDevolucao}"></td>
+							<td>
+								<a th:href="@{/emprestimos/devolver/{id}(id=${i.id})}" class="waves-effect waves-light btn green"> 
+									<i class="material-icons left">thumb_up</i>Devolver
+								</a>
+							</td>
+						</tr>
+					</th:block>
+				</th:block>
+			</tbody>
+		</table>
+
+	</div>
+
+	<!--Import jQuery before materialize.js-->
+	<script src="/webjars/jquery/3.1.1-1/jquery.js"></script>
+	<script src="/webjars/materializecss/0.98.0/js/materialize.js"></script>
+</body>
+</html>

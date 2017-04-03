@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<!--Import Google Icon Font-->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link href="/webjars/materializecss/0.98.0/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div th:include="fragments/navbar"></div>
+	<div class="container">
+
+		<h5 th:text="${contato.nome}"></h5>
+		<ul class="collapsible" data-collapsible="accordion">
+			<li>
+				<div class="collapsible-header">
+					<i class="material-icons">phone</i>Telefone
+				</div>
+				<div class="collapsible-body">
+					<p th:text="${contato.telefone}"></p>
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header">
+					<i class="material-icons">place</i>Endereço
+				</div>
+				<div class="collapsible-body">
+					<p th:text="${contato.endereco}"></p>
+				</div>
+			</li>
+		</ul>
+		<a th:href="@{/contatos/deletar/{id}(id = ${contato.id})}"
+			class="waves-effect waves-light btn red"> <i
+			class="material-icons left">delete</i>Deletar
+		</a>
+
+	</div>
+
+	<!--Import jQuery before materialize.js-->
+	<script src="/webjars/jquery/3.1.1-1/jquery.js"></script>
+	<script src="/webjars/materializecss/0.98.0/js/materialize.js"></script>
+</body>
+</html>

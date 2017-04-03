@@ -1,0 +1,61 @@
+<html>
+<head
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<!--Import Google Icon Font-->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link href="/webjars/materializecss/0.98.0/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+
+<link href="../static/css/main.css" type="text/css" rel="stylesheet" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div th:include="fragments/navbar"></div>
+	<div class="container">
+		<form action="/emprestimos/cadastrar" method="get">
+			<div class="input-field col s12">
+				<select name="contatoId">
+					<option th:each="c : ${contatos}" th:text="${c.nome}" th:value="${c.id}">[...]</option>
+				</select>
+				<label>Contato</label>
+			</div>
+			<div class="input-field col s12">
+				<select name="itemId">
+					<option th:each="i : ${itens}" th:text="${i.nome}" th:value="${i.id}">[...]</option>
+				</select>
+				<label>Item</label>
+			</div>
+			<div class="input-field col s12">
+				<label>Data de Devolução</label>
+				<input type="date" class="datepicker" name="dataDevolucao"/>
+			</div>
+			<button type="submit" class="btn waves-effect waves-light blue">Cadastrar</button>
+		</form>
+	</div>
+
+	<!--Import jQuery before materialize.js-->
+	<script src="/webjars/jquery/3.1.1-1/jquery.js"></script>
+	<script src="/webjars/materializecss/0.98.0/js/materialize.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+	
+	$('.datepicker').pickadate({
+		selectMonths: true, // Creates a dropdown to control month
+		selectYears: 15, // Creates a dropdown of 15 years to control year
+		format: 'yyyy-mm-dd'
+	});
+	
+	</script>
+</body>
+</html>

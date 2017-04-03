@@ -1,0 +1,53 @@
+<html>
+<head
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<!--Import Google Icon Font-->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link href="/webjars/materializecss/0.98.0/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+
+<link href="../static/css/main.css" type="text/css" rel="stylesheet" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div th:include="fragments/navbar"></div>
+	<div class="container">
+		<form action="/contatos/cadastrar" method="post">
+			<div class="row valign-wrapper">
+				<div class="input-field col s12 valign">
+					<i class="material-icons prefix">account_circle</i> 
+					<input id="nome" type="text" name="nome" class="validate" /> <label for="nome">Nome</label>
+				</div>
+			</div>
+			
+			<div class="row valign-wrapper">
+				<div class="input-field col s12 valign">
+					<i class="material-icons prefix">phone</i> 
+					<input id="telefone" type="text" name="telefone" class="validate" /> <label for="telefone">Telefone</label>
+				</div>
+			</div>
+			
+			<div class="row valign-wrapper">
+				<div class="input-field col s12 valign">
+					<i class="material-icons prefix">place</i> 
+					<input id="endereco" type="text" name="endereco" class="validate" /> <label for="endereco">Endereço</label>
+				</div>
+			</div>
+			
+			<button type="submit" class="btn waves-effect waves-light blue">Cadastrar</button>
+		</form>
+	</div>
+
+	<!--Import jQuery before materialize.js-->
+	<script src="/webjars/jquery/3.1.1-1/jquery.js"></script>
+	<script src="/webjars/materializecss/0.98.0/js/materialize.js"></script>
+</body>
+</html>

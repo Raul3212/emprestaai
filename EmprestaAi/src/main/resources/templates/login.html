@@ -1,0 +1,39 @@
+<html>
+<head>
+<!--Import Google Icon Font-->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link href="/webjars/materializecss/0.98.0/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+
+<link href="../static/css/main.css" type="text/css" rel="stylesheet" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div class="container">
+		<form action="login" method="post">
+			<div class="row valign-wrapper">
+				<div class="input-field col s12 valign">
+					<i class="material-icons prefix">account_circle</i> <input
+						id="login" type="text" name="login" class="validate" /> <label for="login">Login</label>
+				</div>
+			</div>
+			<div class="row valign-wrapper">
+				<div class="input-field col s12 valign">
+					<i class="material-icons prefix">lock</i> <input id="password"
+						type="password" name="senha" class="validate" /> <label for="password">Senha</label>
+				</div>
+			</div>
+			<button type="submit" class="btn waves-effect waves-light blue">Entrar</button>
+		</form>
+	</div>
+
+	<!--Import jQuery before materialize.js-->
+	<script src="/webjars/jquery/3.1.1-1/jquery.js"></script>
+	<script src="/webjars/materializecss/0.98.0/js/materialize.js"></script>
+</body>
+</html>
