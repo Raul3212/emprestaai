@@ -40,4 +40,8 @@ public class ItemService {
 		itemRepository.save(item);
 	}
 	
+	public Integer countItensEmprestados(){
+		return itemRepository.countItensEmprestados();
+	}
+	
 }

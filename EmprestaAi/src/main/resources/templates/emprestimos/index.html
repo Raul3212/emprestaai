@@ -20,11 +20,14 @@
 	<div class="container">
 
 		<h5>Lista de Empréstimos</h5>
+		
+		<div class="card-panel red white-text center" th:if="${erro != null}" th:text="${erro}"></div>
+		
 		<a href="/emprestimos/cadastro"
 			class="waves-effect waves-light btn blue"> <i
 			class="material-icons left">add</i>Adicionar Empréstimo
 		</a>
-
+			
 		<table>
 			<thead>
 				<tr>

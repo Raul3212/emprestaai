@@ -4,7 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufc.npi.emprestaai.bean.Usuario;
 import br.ufc.npi.emprestaai.service.UsuarioService;
@@ -27,7 +29,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(path="/login")
-	public String login(String login, String senha, HttpSession session){
+	public String login(String login, String senha, HttpSession session, RedirectAttributes redAttrs){
 		Usuario usuario = usuarioService.buscarPorLogin(login);
 		if(usuario != null){
 			if(usuario.getSenha().equals(senha)){
@@ -35,6 +37,7 @@ public class MainController {
 				return "home";
 			}
 		}
+		redAttrs.addFlashAttribute("erro", "Usuário ou senha incorretos");
 		return "redirect:formLogin";
 		
 	}

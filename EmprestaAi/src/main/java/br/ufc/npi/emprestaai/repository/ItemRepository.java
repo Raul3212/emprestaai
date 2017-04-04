@@ -19,4 +19,6 @@ public interface ItemRepository extends JpaRepository<Item, Long>{
 	@Query(value="SELECT * FROM item AS i WHERE i.contato_id IS NULL AND i.usuario_id = ?1", nativeQuery=true)
 	List<Item> findDisponiveis(Long usuarioId);
 	
+	@Query(value="SELECT count(*) FROM item AS i WHERE i.contato_id IS NOT NULL", nativeQuery=true)
+	Integer countItensEmprestados();
 }
