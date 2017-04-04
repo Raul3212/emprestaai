@@ -23,7 +23,7 @@
 	</div>
 
 	<div class="row center">
-		<h2 class="header center blue-text" th:text="${'Bem-vindo, ' + session.usuario.login}" th:unless="${session == null}" >[...]</h2>
+		<h2 class="header center blue-text" th:text="${'Bem-vindo, ' + session.usuario.nome + '!'}" th:unless="${session == null}" >[...]</h2>
 		<h5 class="header col s12 light">Sistema de Gerenciamento de
 			Empréstimos</h5>
 	</div>
