@@ -1,5 +1,8 @@
 package br.ufc.npi.emprestaai.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.ufc.npi.emprestaai.bean.Role;
+import br.ufc.npi.emprestaai.bean.Role.Modulo;
 import br.ufc.npi.emprestaai.bean.Usuario;
 import br.ufc.npi.emprestaai.service.UsuarioService;
 
 @Controller
+@RequestMapping(path="/")
 public class MainController {
 
 	
@@ -23,7 +29,7 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping(path="formLogin")
+	@RequestMapping(path="/formLogin")
 	public String formLogin(){
 		return "login";
 	}
@@ -57,6 +63,11 @@ public class MainController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(path="/acessonegado")
+	public String acessoNegado(){
+		return "acessonegado";
+	}
+	
 	@RequestMapping(path="/cadastro")
 	public String cadastro(){
 		return "cadastro";
@@ -64,6 +75,11 @@ public class MainController {
 	
 	@RequestMapping(path="/cadastrar")
 	public String cadastrar(Usuario usuario){
+		List<Role> roles = new ArrayList<>();
+		Role usuarioRole = new Role();
+		usuarioRole.setNome(Modulo.USUARIO);
+		roles.add(usuarioRole);
+		usuario.setRoles(roles);
 		usuarioService.salvarUsuario(usuario);
 		return "redirect:/";
 	}
